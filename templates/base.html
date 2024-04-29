@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>
+        {% block title %}
+        block title
+        {% endblock %}
+    </title>
+    {% endblock %}
+</head>
+<body>
+
+<div class="titlecontainer">
+    {% block header %}
+    {% endblock %}
+
+{% block content %}
+BODY CONTENT GOES HERE
+{% endblock %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+<div class="flashed_msgs">
+    <!-- <dt>Status Message</dt> -->
+    {% for category, message in messages %}
+<div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+  <strong>{{ message }}</strong>
+</div>
+    {% endfor %}
+</div>
+  {% endif %}
+{% endwith %}
+
+</div>
+</body>
+
+    {%block javascript %}
+<!-- jQuery 3.7.1 -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+{% endblock %}
+</html>

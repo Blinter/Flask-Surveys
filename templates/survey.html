@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block title %}
+SURVEY
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block header %}
+{% if survey %}
+<h2>{{survey.title}}</h2>
+<h3>{{survey.instructions}}</h3>
+{% elif possible_surveys %}
+<h2>Survey Request</h2>
+
+<h3>Hello Valued User!</h3>
+Please select a survey below to tell us more about you!
+<br />
+<br />
+    {% if possible_surveys|length > 0 %}
+    {% for i in possible_surveys %}
+    <form id="survey_begin_{{i}}" method="post" action="/answer">
+        <input name="surveyName" type="hidden" value="{{i}}"/>
+        <input type="submit" value="{{possible_surveys[i].title}}"/>
+    </form>
+    {% endfor %}
+    {% endif %}
+<br />
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if select %}
+{% with current_question = survey_items %}
+<div class="choices">
+    <h3>{{select.title}}</h3>
+    <form id="survey_begin" method="post" action="/answer">
+        <input type="hidden" id="selectedChoice" name="selectedChoice" />
+        <dt class="surveyQuestion">{{current_question.question}}</dt>
+        {% if current_question.choices|length > 0 %}
+        <!-- Please Select: -->
+        <table class="multipleChoice" >
+            <tr>
+                {% for i in range(0, current_question.choices|length) %}
+                <td>
+                    <div class="selectChoice"
+                         id="{{current_question.choices[i]}}">
+                        {{current_question.choices[i]}}
+                    </div>
+                </td>
+                {% endfor %}
+            </tr>
+        </table>
+        {% endif %}
+        {% if current_question.allow_text %}
+        <textarea id="textInput"
+                  name="textInput"
+                  placeholder="Please fill out this field"
+                  rows="3"
+                  cols="40"
+                  maxlength="128"
+                  autocomplete="off"
+                  wrap="hard"
+                  autocapitalize="true"
+                  spellcheck="true"
+                  required="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        </textarea>
+        <br/>
+        {% endif %}
+        {% if end_survey %}
+        <input id="surveyEnd" type="submit" value="FINISH"/>
+        {% else %}
+        <input id="answerQuestion" type="submit" value="NEXT"/>
+        {% endif %}
+    </form>
+</div>
+{% endwith %}
+{% endif %}
+
+{% block messages %}
+{% endblock %}
+
+
+{% endblock %}
+{% block javascript %}
+{{ super() }}
+<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}

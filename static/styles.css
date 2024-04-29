@@ -1,0 +1,209 @@
+html {
+  height: auto;
+  background-attachment: fixed;
+  background-size: cover;
+  background-image: linear-gradient(to right bottom, #2ecc71, #2980b9);
+  /*Top left to Right Bottom*/
+}
+
+input[type=submit] {
+  cursor: alias;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  padding: 4px;
+  border-radius: 15%;
+  background-color: rgb(125, 125, 125);
+  font-size: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida';
+}
+
+.close {
+  font-size: 8px;
+}
+
+.alert {
+  padding-top: 6px;
+  font-size: 18px;
+  font-family: cursive
+}
+
+.surveyEnd {
+  cursor: pointer;
+}
+
+input#surveyEnd {
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  margin: auto;
+  -webkit-text-stroke: .75px rgba(255, 255, 255, 0.36);
+  background-color: rgba(234, 125, 255, 0.25);
+}
+
+div.titlecontainer {
+  background-color: #172D13;
+  border-radius: 1%;
+  border-top-right-radius: 20%;
+  border-top-left-radius: 20%;
+  text-align: center;
+  justify-content: center;
+  max-width: 480px;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 1);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida';
+  cursor: help;
+  color: lime;
+  background-color: black;
+}
+
+h1 {
+  font-size: 46px;
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida
+
+}
+
+h2 {
+  padding-top: 5px;
+  font-size: 24px;
+  color: White;
+  text-decoration: underline;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida
+
+}
+
+h3,
+.surveyQuestionNumberLabel {
+  font-size: 20px;
+  color: cyan;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: none;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+multipleChoice {
+  background-color: white;
+}
+
+multipleChoice:hover {
+  background-color: grey;
+}
+
+div.choices {
+  font-size: 30px;
+  -webkit-text-stroke: 1.0px rgba(8, 0, 255, 0.267);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: auto;
+  color: white;
+}
+
+div.choices:hover {
+  cursor: help;
+  margin: auto;
+}
+
+label.surveyQuestionNumberLabel {
+  font-size: 18px;
+  margin: auto;
+  text-align: left;
+}
+
+.multipleChoice {
+  margin: auto;
+  width: 100%;
+}
+
+.multipleChoice:hover {
+  cursor: help;
+  margin: auto;
+  width: 100%;
+  border: 0.0px solid black;
+  -webkit-text-stroke: 0px rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.multipleChoice#selected {
+  margin: auto;
+  width: 100%;
+}
+
+.selectChoice {
+  font-size: 20px;
+  margin: auto;
+  border: 3px solid black;
+  border-radius: 5%;
+  -webkit-text-stroke: 1px rgba(125, 125, 125, 1);
+  background-color: rgba(234, 125, 255, 0.55);
+  padding: 15px;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+}
+
+.selectChoice:hover {
+  /* Opera/IE 8+ */
+  margin: auto;
+}
+
+.selected {
+  cursor: not-allowed;
+  margin: auto;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+  /* Opera/IE 8+ */
+  -webkit-text-stroke: 1px rgba(125, 125, 125, 1);
+  background-color: rgba(234, 125, 255, 0.55);
+  color: white;
+  border: 3px solid lime;
+}
+
+.already_completed {
+  cursor: not-allowed;
+}
+
+input {
+  cursor: pointer;
+  text-align: center;
+  color: rgb(168, 168, 0);
+  background-color: rgba(54, 127, 167, 0.966);
+}
+
+textarea {
+  background-color: gray;
+  color: teal;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #999;
+  resize: none;
+  padding: 10px;
+  font-size: 16px;
+  text-align: left;
+  font-family: 'Courier New', Courier, monospace;
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+
+textarea:hover {
+  color: white;
+  background-color: teal;
+  cursor: text;
+  margin: auto;
+  border: 0;
+}
+
+textarea:invalid {
+  border: 2px dashed red;
+}
+
+textarea:valid {
+  border: 2px solid lime;
+}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}
+SURVEY
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block header %}
+<h2>{{select.title}}</h2>
+<h3>Survey Complete!</h3>
+<h4>Here's the data we saved about you.</h4>
+
+{% block messages %}
+{% endblock %}
+{% endblock %}
+
+{% block content %}
+
+<div class="choices">
+{% for i in range(0, select.questions|length) %}
+    <h3>{{select.questions[i].title}}</h3>
+        <input type="hidden" id="selectedChoice" name="selectedChoice"
+               value="{{results[i]}}" />
+        <dt class="surveyQuestion">{{select.questions[i].question}}</dt>
+        {% if select.questions[i].choices|length > 0 %}
+        <!-- Please Select: -->
+        <table class="multipleChoice" >
+            <tr>
+                    {% if select.questions[i].allow_text %}
+                <tr>
+                    <textarea placeholder="Please fill out this field"
+                              class="already_completed"
+                              rows="3"
+                              cols="40"
+                              maxlength="128"
+                              autocomplete="off"
+                              wrap="hard"
+                              autocapitalize="true"
+                              spellcheck="true"
+                              required="true"
+                              disabled="true">{{resultst[i]}}</textarea>
+                    <br/>
+                </tr>
+                {% endif %}
+                {% for j in range(0, select.questions[i].choices|length) %}
+                <td>
+                    {% if results[i] == select.questions[i].choices[j] %}
+                    <div class="selectChoice selected already_completed"
+                         id="{{select.questions[i].choices[i]}}" disabled>
+                        {{select.questions[i].choices[j]}}
+                    </div>
+                    {% else %}
+                    <div class="selectChoice already_completed"
+                         id="{{select.questions[i].choices[i]}}" disabled>
+                        {{select.questions[i].choices[j]}}
+                    </div>
+                    {% endif %}
+                </td>
+
+                {% endfor %}
+            </tr>
+
+        </table>
+        {% endif %}
+    {% endfor %}
+</div>
+
+<h3>Take another survey?</h3>
+    {% if possible_surveys|length > 0 %}
+    {% for i in possible_surveys %}
+    {% if possible_surveys[i] != select %}
+    <form id="survey_begin_{{i}}" method="post" action="/answer">
+        <input name="newSurveyName" type="hidden" value="{{i}}"/>
+        <input type="submit" value="{{possible_surveys[i].title}}"/>
+    </form>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+<br />
+{% endblock %}
+
+{% block javascript %}
+{{ super() }}
+<script type="text/javascript"
+        src="{{ url_for('static', filename='script_complete.js') }}"></script>
+{% endblock %}
